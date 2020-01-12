@@ -1,3 +1,7 @@
+-- config.lua:
+-- Read contents by doing stitch("config").YourPref
+
+-- For console, instructions further down
 layout = "QwertyUS"
 console = "9"
 deep = "!"
@@ -8,6 +12,12 @@ wraps = {
     ",", ":", "(", ")", "+",
     "*", "-", "/", "^", "="
 }
+
+-- 0: off
+-- 1: YOU DIED
+-- 2: Wasted
+-- Scroll through them with Action5
+FailOverlay = 1
 
 -- Used by OpenITG only; see NotITGPrefs.ini for the NotITG variant
 -- Hides song title and banner in ScreenEdit
