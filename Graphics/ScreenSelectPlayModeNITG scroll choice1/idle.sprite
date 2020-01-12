@@ -1,0 +1,10 @@
+[Sprite]
+Texture=daikyi_idle 3x1.png
+Frame0000=0
+Delay0000=0.10
+Frame0001=2
+Delay0001=0.125
+Frame0002=1
+Delay0002=0.150
+Frame0003=2
+Delay0003=0.125

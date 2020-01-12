@@ -23,14 +23,4 @@
 		InitCommand="diffusealpha,0"
 		OnCommand="@'sleep,.4;diffuse,'..DifficultyColor(3)..';x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;rotationz,10;diffusealpha,0;zoom,0;diffusealpha,1;decelerate,0.8;rotationz,0;zoom,0.9;diffusealpha,0'"
 	/>
-	<Actor
-		Condition="not GAMESTATE:IsCourseMode()"
-		File="@'../../Graphics/ScreenGameplay stage '..GetStageText()"
-		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;diffusealpha,0;accelerate,0.3;diffusealpha,1;playcommand,FadeIn"
-	/>
-	<Actor
-		Condition="GAMESTATE:IsCourseMode()"
-		File="../../Graphics/ScreenGameplay course song 1"
-		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;diffusealpha,0;accelerate,0.3;diffusealpha,1"
-	/>
 </children></ActorFrame>
