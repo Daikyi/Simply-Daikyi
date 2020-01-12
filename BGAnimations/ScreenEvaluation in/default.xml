@@ -3,12 +3,12 @@
 		<AutoActor File="../_fade in" />
 		<ActorFrame Condition="OnePassed()">
 			<children>
-				<AutoActor File="cleared text" Command="zoom,0.8;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+50;diffusealpha,0;accelerate,0.4;diffusealpha,1;sleep,1.3;decelerate,0.4;diffusealpha,0" />
+				<AutoActor File="cleared text" Command="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;diffusealpha,0;rotationz,360*2.5;decelerate,0.6;rotationz,(math.random(-3,3));diffusealpha,1;sleep,1.3;linear,0.3;fadebottom,1;" />
 				</children> 
 		</ActorFrame>
 		<ActorFrame Condition="not OnePassed()">
 			<children>
-				<AutoActor File="failed text" Command="zoom,1;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+50;diffusealpha,0;accelerate,0.4;diffusealpha,1;sleep,1.3;decelerate,0.4;diffusealpha,0" />
+				<AutoActor File="failed text" Command="vibrate;effectmagnitude,1,1,1;rotationz,(math.random(-5,5));zoom,0;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;bounceend,0.4;zoom,0.8;sleep,1.3;accelerate,1.4;addy,400" />
 				</children>
 		</ActorFrame>
 	</children>
