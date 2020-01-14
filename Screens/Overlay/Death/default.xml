@@ -1,20 +1,21 @@
 <ActorFrame Condition="FUCK_EXE" ><children>
 	<Layer Type="ActorFrameTexture"
+		InitCommand="%function(self)
+			if not self:GetTexture() then
+				self:SetWidth( PREFSMAN:GetPreference('DisplayWidth') );
+				self:SetHeight( PREFSMAN:GetPreference('DisplayHeight') );
+				self:EnableDepthBuffer( false );
+				self:EnableAlphaBuffer( true );
+				self:EnableFloat( false );
+				self:EnablePreserveTexture( true );
+				
+				self:hidden(1);
+				
+				self:Create();
+			end
+		end"
 		OverlayReadyMessageCommand="%function(self)
-			
-			self:SetWidth( DISPLAY:GetDisplayWidth() );
-			self:SetHeight( DISPLAY:GetDisplayHeight() );
-			self:EnableDepthBuffer( false );
-			self:EnableAlphaBuffer( true );
-			self:EnableFloat( false );
-			self:EnablePreserveTexture( true );
-			
-			self:hidden(1);
-			
-			self:Create();
-			
-			sg_af_capture = self;
-			
+			sg_af_capture = self 
 		end"
 		AFWastedMessageCommand="%function(self)
 			self:hidden(0)
@@ -24,8 +25,8 @@
 	<Layer Type="Sprite" Texture="white" Frag="gray.frag"
 		OverlayReadyMessageCommand="%function(self)
 			self:SetTextureFiltering(true)
-			self:basezoomx((SCREEN_WIDTH/DISPLAY:GetDisplayWidth()));
-			self:basezoomy(-1*(SCREEN_HEIGHT/DISPLAY:GetDisplayHeight()));
+			self:basezoomx(SCREEN_WIDTH/DISPLAY:GetDisplayWidth());
+			self:basezoomy(-SCREEN_HEIGHT/DISPLAY:GetDisplayHeight());
 			self:xy(SCREEN_CENTER_X,SCREEN_CENTER_Y);
 			self:sleep(0.01);
 			self:hidden(1)
@@ -37,7 +38,11 @@
 		SetCommand="%function(self)
 			self:SetTexture(sg_af_capture:GetTexture())
 		end"
-		AFWastedMessageCommand="hidden,0;diffusealpha,1;sleep,4;linear,1;diffusealpha,0;"
+		AFWastedMessageCommand="hidden,0;diffusealpha,1;sleep,4;linear,1;diffusealpha,0;queuecommand,HideAft"
+		HideAftCommand="%function(self)
+			self:hidden(1)
+			sg_af_capture:hidden(1)
+		end"
 	/>
 	
 	<Layer Type="Quad" OverlayReadyMessageCommand="stretchto,0,0,SCREEN_WIDTH,SCREEN_HEIGHT;diffuse,1,1,1,0;" AFWastedMessageCommand="diffusealpha,1;linear,.5;diffusealpha,0;" />
