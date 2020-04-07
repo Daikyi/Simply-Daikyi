@@ -100,7 +100,7 @@ $(() => {
                         if (document.getElementById(`s_${i+1}`)) {
 							if (i==7){
 								if ( data[i] != ''){
-								document.getElementById(`s_${i+1}`).innerHTML = 'Modded by ' + data[i];	
+								document.getElementById(`s_${i+1}`).innerHTML = 'Mods: ' + data[i];	
 								}else{
 									document.getElementById(`s_${i+1}`).innerHTML = '-';	
 								}

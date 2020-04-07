@@ -51,7 +51,7 @@ body, body * {
 }
 h3, h4, h5, h6 {
 	font-family: 'Roboto Condensed', sans-serif;
-	font-weight: 300;
+	font-weight: 250;
 }
 
 h3 span,
@@ -79,7 +79,7 @@ h6 span {
 		0 2px 0 #333,
 		0 2.5px 0 #333;
 	margin-bottom: 0;
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 }
 
 .text-center h4 {
@@ -89,7 +89,7 @@ h6 span {
 		0 2px 0 #333,
 		0 2.5px 0 #333;
 	margin-bottom: 0;
-	font-size: 1.75rem;
+	font-size: 1.5rem;
 }
 
 .columns {
@@ -124,11 +124,11 @@ h6 span {
 	margin-bottom: 4px;
 }
 h1 {
-	font-size: 2.5rem;
+	font-size: 1.75rem;
 	margin-right: 0.25rem;
 }
 h2 {
-	font-size: 2.25rem;
+	font-size: 2rem;
 }
 h4 {
 	margin-left: 4px;
