@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr" dir="ltr" prefix="og: http://ogp.me/ns#">
+    <head>
+
+        <!-- Metas / Infos
+            =========================================== -->
+
+        <!-- Affichage de la page -->
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#009999" />
+        <meta name="msapplication-TileColor" content="#009999" />
+
+        <!-- Informations -->
+        <title>SM Infos - HeySora</title>
+        <meta name="author" content="HeySora" />
+        <meta property="og:title" content="SM Infos - HeySora" />
+        <meta property="og:type" content="website" />
+
+        <!-- Feuilles de style CSS
+            =========================================== -->
+        <!-- Google Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400%7CRoboto:300,400,400i,700" />
+
+        <!-- Foundation 6.4.2 -->
+        <link rel="stylesheet" href="css/vendor/foundation.min.css" />
+
+        <!-- L'essentiel. -->
+        <link rel="stylesheet" href="css/hey.css" />
+
+        <!-- FontAwesome
+            =========================================== -->
+        <script src="https://use.fontawesome.com/f74e84ee43.js"></script>
+
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="small-12 columns">
+                <div class="text-center" style="padding-top: 2px">
+                    <h1><span id="s_1">Waiting...</span> |</h1>
+                    <h2 id="s_2">Selecting a song</h2>
+                    <h4 id="s_3">(??:??)</h4>
+                    <h3>Stepped by <span id="s_5">(???)</span> &middot; <span id="s_4">??</span> &middot; <span id="s_6">(???)</span> Notes</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="expanded row align-middle align-justify">
+            <div class="columns">
+                <div class="text-right">
+                    <h3>Judgments</h3>
+                    <h4>Since the beginning</h4>
+                    <div class="judg">
+                        <span><span id="j_1">0</span> - <span id="j_1_p">0</span>%</span>
+                        <span><span id="j_2">0</span> - <span id="j_2_p">0</span>%</span>
+                        <span><span id="j_3">0</span> - <span id="j_3_p">0</span>%</span>
+                        <span><span id="j_4">0</span> - <span id="j_4_p">0</span>%</span>
+                        <span><span id="j_5">0</span> - <span id="j_5_p">0</span>%</span>
+                        <span><span id="j_6">0</span> - <span id="j_6_p">0</span>%</span>
+                    </div>
+                    <hr />
+                    <h4>Current song</h4>
+                    <div class="judg">
+                        <span><span id="j_7">0</span> - <span id="j_7_p">0</span>%</span>
+                        <span><span id="j_8">0</span> - <span id="j_8_p">0</span>%</span>
+                        <span><span id="j_9">0</span> - <span id="j_9_p">0</span>%</span>
+                        <span><span id="j_10">0</span> - <span id="j_10_p">0</span>%</span>
+                        <span><span id="j_11">0</span> - <span id="j_11_p">0</span>%</span>
+                        <span><span id="j_12">0</span> - <span id="j_12_p">0</span>%</span>
+                    </div>
+                    <h4>
+                </div>
+            </div>
+            <div class="columns">
+                <div>
+                    <h3>Statistics</h3>
+                    <h4>Cur. Score: <span id="j_13">[Score]</span></h4>
+                    <h4>Cur. Life: <span id="j_14">[Life]%</span></h4>
+                    <!--TODO<h4>PB: <span>[PB]</span></h4>-->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- JavaScript
+            =========================================== -->
+        <!-- jQuery 3.1.1 -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8= sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7 sha512-U6K1YLIFUWcvuw5ucmMtT9HH4t0uz3M366qrF5y4vnyH6dgDzndlcGvH/Lz5k8NFh80SN95aJ5rqGZEdaQZ7ZQ==" crossorigin="anonymous"></script>
+
+        <!-- jQuery UI 1.12.1 -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU= sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX sha512-4DaiBX8rsgOoBSNLceQ/IixDF+uUDV0hJrQX/MJ9RwJZCDqbEp0EjIQodGxszPtTpwlenJznR2jkgDWqj4Hs+A==" crossorigin="anonymous"></script>
+
+        <!-- Foundation 6.4.2 -->
+        <script src="js/vendor/what-input.js"></script>
+        <script src="js/vendor/foundation.min.js"></script>
+
+        <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+
+        <!-- L'essentiel. (bis) -->
+        <script src="js/hey.js"></script>
+
+    </body>
+</html>

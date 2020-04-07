@@ -1,0 +1,22 @@
+{
+  "name": "stream-overlay",
+  "version": "1.0.0",
+  "description": "HeySora's nITG Stream Overlay",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "heysora",
+    "nitg"
+  ],
+  "author": "HeySora",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bufferutil": "^3.0.0",
+    "discord.js": "^10.0.1",
+    "express": "^4.15.3",
+    "line-by-line": "^0.1.5",
+    "socket.io": "^2.0.1"
+  }
+}

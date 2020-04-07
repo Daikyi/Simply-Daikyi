@@ -1,0 +1,242 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Miso';
+    src: url('../fonts/miso-regular-webfont.eot');
+    src: url('../fonts/miso-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/miso-regular-webfont.woff2') format('woff2'),
+         url('../fonts/miso-regular-webfont.woff') format('woff'),
+         url('../fonts/miso-regular-webfont.ttf') format('truetype'),
+         url('../fonts/miso-regular-webfont.svg#misoregular') format('svg');
+    font-weight: normal; /* 400 */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Miso';
+    src: url('../fonts/miso-light-webfont.eot');
+    src: url('../fonts/miso-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/miso-light-webfont.woff2') format('woff2'),
+         url('../fonts/miso-light-webfont.woff') format('woff'),
+         url('../fonts/miso-light-webfont.ttf') format('truetype'),
+         url('../fonts/miso-light-webfont.svg#misolight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Miso';
+    src: url('../fonts/miso-bold-webfont.eot');
+    src: url('../fonts/miso-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/miso-bold-webfont.woff2') format('woff2'),
+         url('../fonts/miso-bold-webfont.woff') format('woff'),
+         url('../fonts/miso-bold-webfont.ttf') format('truetype'),
+         url('../fonts/miso-bold-webfont.svg#misobold') format('svg');
+    font-weight: bold; /* 700 */
+    font-style: normal;
+}
+
+html, body {
+	height: 100%;
+	/*background: black;*/
+}
+
+body {
+	/*background: url('../img/bg.jpg') no-repeat center center fixed;*/
+	background-size: cover;
+	background: #00FFFF;
+	color: #fafaf2;
+}
+body, body * {
+	font-family: 'Roboto', sans-serif;
+	line-height: 1.2;
+}
+h3, h4, h5, h6 {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-weight: 300;
+}
+
+h3 span,
+h4 span,
+h5 span,
+h6 span {
+	font-weight: 400;
+}
+
+.text-center h1, .text-center h2 {
+	text-shadow: 0 0.5px 0 #333,
+		0 1px 0 #333,
+		0 1.5px 0 #333,
+		0 2px 0 #333,
+		0 2.5px 0 #333,
+		0 3px 0 #333,
+		0 3.5px 0 #333,
+		0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.text-center h3 {
+	text-shadow: 0 0.5px 0 #333,
+		0 1px 0 #333,
+		0 1.5px 0 #333,
+		0 2px 0 #333,
+		0 2.5px 0 #333;
+	margin-bottom: 0;
+	font-size: 1.75rem;
+}
+
+.text-center h4 {
+	text-shadow: 0 0.5px 0 #333,
+		0 1px 0 #333,
+		0 1.5px 0 #333,
+		0 2px 0 #333,
+		0 2.5px 0 #333;
+	margin-bottom: 0;
+	font-size: 1.75rem;
+}
+
+.columns {
+	box-shadow: 0 2px 24px #000, 0 2px 16px rgba(0, 0, 0, 0.4);
+	padding: 0;
+}
+
+.columns > div {
+	backdrop-filter: blur(10px) brightness(50%) contrast(130%);
+	width: 100%;
+	height: 100%;
+	padding: 0.5rem .9375rem 0.625rem;
+}
+
+.expanded {
+	height: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	right: 0;
+}
+
+.expanded .columns {
+	max-width: 19rem;
+}
+
+.text-center h1,
+.text-center h2,
+.text-center h4 {
+	display: inline-block;
+	margin-bottom: 4px;
+}
+h1 {
+	font-size: 2.5rem;
+	margin-right: 0.25rem;
+}
+h2 {
+	font-size: 2.25rem;
+}
+h4 {
+	margin-left: 4px;
+}
+
+.loaded #loader {
+	opacity: 0;
+}
+
+.judg > span {
+	display: block;
+}
+.judg > span, .judg > span * {
+	/*display: block;*/
+	font-family: 'Miso', sans-serif;
+	font-size: 1.875rem;
+	line-height: 0.95;
+	text-shadow: 0 1px 8px #000;
+}
+
+.judg > span:first-child,
+.judg > span:first-child * {
+    color: #39c;
+}
+.judg > span:nth-child(2),
+.judg > span:nth-child(2) * {
+    color: #da0;
+}
+.judg > span:nth-child(3),
+.judg > span:nth-child(3) * {
+    color: #0c3;
+}
+.judg > span:nth-child(4),
+.judg > span:nth-child(4) * {
+    color: #66c;
+}
+.judg > span:nth-child(5),
+.judg > span:nth-child(5) * {
+    color: #f93;
+}
+.judg > span:nth-child(6),
+.judg > span:nth-child(6) * {
+    color: #ff3f3f;
+}
+
+.d_0 {
+	color: #4bf;
+	text-shadow: 0 0.5px 0 #27a,
+		0 1px 0 #27a,
+		0 1.5px 0 #27a,
+		0 2px 0 #27a,
+		0 2.5px 0 #27a;
+}
+.d_0::before {
+	content: 'Beginner ';
+}
+.d_1 {
+	color: #0c3;
+	text-shadow: 0 0.5px 0 #071,
+		0 1px 0 #071,
+		0 1.5px 0 #071,
+		0 2px 0 #071,
+		0 2.5px 0 #071;
+}
+.d_1::before {
+	content: 'Easy ';
+}
+.d_2 {
+	color: #ee0;
+	text-shadow: 0 0.5px 0 #990,
+		0 1px 0 #990,
+		0 1.5px 0 #990,
+		0 2px 0 #990,
+		0 2.5px 0 #990;
+}
+.d_2::before {
+	content: 'Normal ';
+}
+.d_3 {
+	color: #fb0;
+	text-shadow: 0 0.5px 0 #a70,
+		0 1px 0 #a70,
+		0 1.5px 0 #a70,
+		0 2px 0 #a70,
+		0 2.5px 0 #a70;
+}
+.d_3::before {
+	content: 'Hard ';
+}
+.d_4 {
+	color: #f66;
+	text-shadow: 0 0.5px 0 #a33,
+		0 1px 0 #a33,
+		0 1.5px 0 #a33,
+		0 2px 0 #a33,
+		0 2.5px 0 #a33;
+}
+.d_4::before {
+	content: 'Expert ';
+}
+.d_5 {
+	color: #aaa;
+	text-shadow: 0 0.5px 0 #555,
+		0 1px 0 #555,
+		0 1.5px 0 #555,
+		0 2px 0 #555,
+		0 2.5px 0 #555;
+}
+.d_5::before {
+	content: 'Edit ';
+}

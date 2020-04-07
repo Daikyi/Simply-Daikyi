@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <base href="/files/old" />
+        <meta charset="utf-8" />
+        <title>Stream Overlay</title>
+
+        <style>
+            @font-face {
+                font-family: 'Miso';
+                src: url('/files/old/fonts/miso-regular-webfont.eot');
+                src: url('/files/old/fonts/miso-regular-webfont.eot?#iefix') format('embedded-opentype'),
+                     url('/files/old/fonts/miso-regular-webfont.woff2') format('woff2'),
+                     url('/files/old/fonts/miso-regular-webfont.woff') format('woff'),
+                     url('/files/old/fonts/miso-regular-webfont.ttf') format('truetype'),
+                     url('/files/old/fonts/miso-regular-webfont.svg#misoregular') format('svg');
+                font-weight: normal; /* 400 */
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Miso';
+                src: url('/files/old/fonts/miso-light-webfont.eot');
+                src: url('/files/old/fonts/miso-light-webfont.eot?#iefix') format('embedded-opentype'),
+                     url('/files/old/fonts/miso-light-webfont.woff2') format('woff2'),
+                     url('/files/old/fonts/miso-light-webfont.woff') format('woff'),
+                     url('/files/old/fonts/miso-light-webfont.ttf') format('truetype'),
+                     url('/files/old/fonts/miso-light-webfont.svg#misolight') format('svg');
+                font-weight: 300;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Miso';
+                src: url('/files/old/fonts/miso-bold-webfont.eot');
+                src: url('/files/old/fonts/miso-bold-webfont.eot?#iefix') format('embedded-opentype'),
+                     url('/files/old/fonts/miso-bold-webfont.woff2') format('woff2'),
+                     url('/files/old/fonts/miso-bold-webfont.woff') format('woff'),
+                     url('/files/old/fonts/miso-bold-webfont.ttf') format('truetype'),
+                     url('/files/old/fonts/miso-bold-webfont.svg#misobold') format('svg');
+                font-weight: bold; /* 700 */
+                font-style: normal;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background: #000;
+            }
+
+            * {
+                font-family: 'Miso', sans-serif;
+                margin: 0;
+                color: #fff;
+                text-shadow: 0px 2px 8px rgba(0,0,0,0.8);
+                -webkit-hyphens: auto;
+                -moz-hyphens: auto;
+                -ms-hyphens: auto;
+                -o-hyphens: auto;
+                hyphens: auto;
+                word-break: break-all;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            body > div {
+                margin: 0;
+                padding: 8px;
+                width: 308px;
+            }
+
+            #song-infos {
+                height: 150px;
+                background: url('/files/old/SgI-bg.png') no-repeat center center;
+                background-size: cover;
+                position: relative;
+            }
+
+            #song-infos-content {
+                margin: -12px;
+                padding: 12px;
+                height: 100%;
+            }
+
+            h1 {
+                font-size: 30px;
+                max-height: 64px;
+                width: 100%;
+                line-height: 1.1;
+            }
+
+            p {
+                font-size: 24px;
+                max-height: 28px;
+                width: 100%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            #score-infos {
+                margin-top: 4px;
+                height: 260px;
+                background: url('/files/old/ScI-bg.png') no-repeat center center;
+                background-size: cover;
+            }
+
+            table {
+                width: 100%;
+            }
+            table * {
+                font-weight: normal;
+            }
+            th:first-child, td:first-child {
+                text-align: left;
+            }
+            th:last-child, td:last-child {
+                text-align: right;
+            }
+            th {
+                font-size: 22px;
+                font-weight: 300;
+            }
+            td {
+                font-size: 30px;
+                line-height: 0.95;
+            }
+            h2 {
+                margin-top: 4px;
+                font-weight: normal;
+                font-size: 36px;
+                text-align: center;
+            }
+            td > span:first-child, td > span:first-child * {
+                color: #39c;
+            }
+            td > span:nth-child(2), td > span:nth-child(2) * {
+                color: #da0;
+            }
+            td > span:nth-child(3), td > span:nth-child(3) * {
+                color: #0c3;
+            }
+            td > span:nth-child(4), td > span:nth-child(4) * {
+                color: #66c;
+            }
+            td > span:nth-child(5), td > span:nth-child(5) * {
+                color: #f93;
+            }
+            td > span:nth-child(6), td > span:nth-child(6) * {
+                color: #ff3f3f;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="song-infos">
+            <div id="song-infos-content">
+                <h1 id="s_1">Waiting for a song...</h1>
+                <p>Artist: <span id="s_2">(???)</span></p>
+                <p>Step Artist : <span id="s_5">(???)</span></p>
+                <p><span id="s_3">??:??</span> - <span id="s_6">(???)</span> Notes</p>
+            </div>
+        </div>
+
+        <div id="score-infos">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Since the beginning</th>
+                        <th>Current Song</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span><span id="j_1_p">0</span>% - <span id="j_1">0</span><br /></span>
+                            <span><span id="j_2_p">0</span>% - <span id="j_2">0</span><br /></span>
+                            <span><span id="j_3_p">0</span>% - <span id="j_3">0</span><br /></span>
+                            <span><span id="j_4_p">0</span>% - <span id="j_4">0</span><br /></span>
+                            <span><span id="j_5_p">0</span>% - <span id="j_5">0</span><br /></span>
+                            <span><span id="j_6_p">0</span>% - <span id="j_6">0</span></span>
+                        </td>
+                        <td>
+                            <span><span id="j_7">0</span> - <span id="j_7_p">0</span>%<br /></span>
+                            <span><span id="j_8">0</span> - <span id="j_8_p">0</span>%<br /></span>
+                            <span><span id="j_9">0</span> - <span id="j_9_p">0</span>%<br /></span>
+                            <span><span id="j_10">0</span> - <span id="j_10_p">0</span>%<br /></span>
+                            <span><span id="j_11">0</span> - <span id="j_11_p">0</span>%<br /></span>
+                            <span><span id="j_12">0</span> - <span id="j_12_p">0</span>%</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Current score: <strong id="j_13">00.00%</strong></h2>
+        </div>
+
+        <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+        <script>
+            function twoDigits(n) {
+                return n < 10 ? '0'+n : n;
+            }
+            let s = io.connect('http://localhost:8080');
+            let oldJ = [8888,8888,8888,8888,8888,8888,8888,8888,8888,8888,8888,8888,8888];
+            let oldS = ['8888','8888','8888','8888','8888','8888','8888','8888'];
+
+            s.on('judgments', data => {
+                if (data.length == 0) {
+                    if (oldJ[0] != 9999 && oldJ[1] != 9999) {
+                        oldJ = [9999,9999,9999,9999,9999,9999,9999,9999,9999,9999,9999,9999,9999];
+                        for (let i = 1; i <= 12; i++) {
+                            document.getElementById(`j_${i}`).innerHTML = 0;
+                            document.getElementById(`j_${i}_p`).innerHTML = 0;
+                        }
+                        document.getElementById('j_13').innerHTML = '00.00%';
+                    }
+                } else {
+                    let gSum = data[0] + data[1] + data[2] + data[3] + data[4] + data[5];
+                    let lSum = data[6] + data[7] + data[8] + data[9] + data[10] + data[11];
+                    for (let i = 0; i < data.length; i++) {
+                        if (i == 12 && data[i] != oldJ[i]) {
+                            let v = Number(data[12]).toFixed(2);
+                            document.getElementById('j_13').innerHTML = (data[12] < 10 ? '0' : '') + v + '%';
+                        } else if (i < 6) {
+                            if (data[i] != oldJ[i]) {
+                                let v = data[i];
+                                document.getElementById(`j_${i+1}`).innerHTML = v;
+                            }
+                            if (gSum > 0) {
+                                let p = Math.round(100*data[i] / gSum);
+                                document.getElementById(`j_${i+1}_p`).innerHTML = p;
+                            } else {
+                                document.getElementById(`j_${i+1}_p`).innerHTML = 0;
+                            }
+                        } else if (i < 12) {
+                            if (data[i] != oldJ[i]) {
+                                let v = data[i];
+                                document.getElementById(`j_${i+1}`).innerHTML = v;
+                            }
+                            if (lSum > 0) {
+                                let p = Math.round(100*data[i] / lSum);
+                                document.getElementById(`j_${i+1}_p`).innerHTML = p;
+                            } else {
+                                document.getElementById(`j_${i+1}_p`).innerHTML = 0;
+                            }
+                        }
+                    }
+                    oldJ = data;
+                }
+            });
+
+            s.on('songinfos', data => {
+                if (data.length == 0) {
+                    if (oldS[0] != '9999' && oldS[1] != '9999') {
+                        oldS = ['9999','9999','9999','9999','9999','9999','9999','9999'];
+                        document.getElementById('s_1').innerHTML = 'Waiting for a song...';
+                        document.getElementById('s_2').innerHTML = '(???)';
+                        document.getElementById('s_3').innerHTML = '??:??';
+                        document.getElementById('s_5').innerHTML = '(???)';
+                        document.getElementById('s_6').innerHTML = '(???)';
+                        document.getElementById('song-infos').style.backgroundImage = "url('/files/old/SgI-bg.png')";
+                        document.getElementById('song-infos-content').style.backgroundColor = 'transparent';
+                        s.emit('game', '');
+                    }
+                } else {
+
+                    const bannerIndex = 7;
+
+                    let iii = 0;
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i] != oldS[i]) {
+                            iii++;
+                            if (i == 2) {
+                                let min = Math.floor(data[2] / 60);
+                                let sec = data[2] % 60;
+                                document.getElementById('s_3').innerHTML = `${twoDigits(min)}:${twoDigits(sec)}`;
+                            } else if (i == bannerIndex) {
+                                document.getElementById('song-infos').style.backgroundImage = "url('http://localhost:8080/files/old" + data[bannerIndex].replace("'", "\\'") + "')";
+                                document.getElementById('song-infos-content').style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                            } else {
+                                if (document.getElementById(`s_${i+1}`)) {
+                                    document.getElementById(`s_${i+1}`).innerHTML = data[i];
+                                }
+                            }
+                        }
+                    }
+                    if (!data[bannerIndex]) {
+                        document.getElementById('song-infos').style.backgroundImage = "url('/files/old/SgI-bg.png')";
+                        document.getElementById('song-infos-content').style.backgroundColor = 'transparent';
+                    }
+                    oldS = data;
+                    if (iii > 1) {
+                        s.emit('game', data[0] + ' - ' + data[1]);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
