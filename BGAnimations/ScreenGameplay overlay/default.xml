@@ -27,7 +27,8 @@
             end"
             GetSongCommand="%function(self)
                 streamsetupvariable_song = GAMESTATE:GetCurrentSong();
-				local song = streamsetupvariable_song
+				streamsetupResets = 0
+                local song = streamsetupvariable_song
                 if song then
                     local p = 0;
                     local steps = GAMESTATE:GetCurrentSteps(0);
@@ -38,13 +39,22 @@
 
 					local songtime = song:MusicLengthSeconds() or 0
 					local songfloor = math.floor(songtime)
-					local songmin = math.floor(songfloor/60)
-					local songsec = math.mod(songfloor,60)
-					local songmili = songtime - songfloor
+					--local songmin = math.floor(songfloor/60)
+					--local songsec = math.mod(songfloor,60)
+					--local songmili = songtime - songfloor
 					
-                    local s = (song:GetDisplayArtist() or '???') .. ' - ';
-                    s = s .. (song:GetDisplayMainTitle() or '???') .. ' (';
-                    s = s .. songmin .. ':' .. songsec .. ':' .. songmili;
+					local s = (song:GetDisplayMainTitle() or '') .. '\n';
+                    s = s .. (song:GetDisplayArtist() or '') .. '\n';
+					s = s .. songfloor .. '\n';
+                    s = s .. (steps and steps:GetMeter() or 0) .. '\n';
+                    s = s .. hey.GetStepsDescriptionText(song) .. '\n';
+                    s = s .. (steps and steps:GetRadarValues(p):GetValue(RADAR_CATEGORY_TAPS) or 0) .. '\n';
+                    s = s .. (steps and steps:GetDifficulty() or 0) .. '\n';
+                    s = s .. (song:GetBannerPath() or '') .. '\n';
+                    
+                    --local s = ' Now Playing ~ [ ' .. (song:GetDisplayArtist() or '???') .. ' - ';
+                    --s = s .. (song:GetDisplayMainTitle() or '???') .. ' (';
+                    --s = s .. songmin .. ':' .. songsec .. ') ] ';
                     --s = s .. (steps and steps:GetMeter() or 0) .. '\n';
                     --s = s .. hey.GetStepsDescriptionText(song) .. '\n';
                     --s = s .. (steps and steps:GetRadarValues(p):GetValue(RADAR_CATEGORY_TAPS) or 0) .. '\n';
@@ -59,7 +69,12 @@
             end"
 			UpdateCommand="%function(self)
 				if streamsetupvariable_song == GAMESTATE:GetCurrentSong() then
-					self:sleep(1)
+					if streamsetupResets==0 then
+						self:sleep(song:MusicLengthSeconds()+5 or 1)
+						streamsetupResets = streamsetupResets+1
+					else
+						self:sleep(1)
+					end
 					self:queuecommand('Update');
 				else
 					self:queuecommand('GetSong');
