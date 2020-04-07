@@ -280,7 +280,7 @@ function hey.UpdateCommand()
 end
 
 hey.streamMode = false;
-hey.basePath = 'C:\\Users\\Daikyi\\Documents\\';
+hey.basePath = 'C:\\Users\\Bun\\Desktop\\Fuckoding sshit\\Themes\\Simply-Daikyi\\Node\\';
 hey.JF, hey.JFE = io.open(hey.basePath .. 'judgments.txt', 'w+');
 hey.SF, hey.SFE = io.open(hey.basePath .. 'songinfos.txt', 'w+');
 if not hey.JFE and io.type(hey.JF) == 'file'
