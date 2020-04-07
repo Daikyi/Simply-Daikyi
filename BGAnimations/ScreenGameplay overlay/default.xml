@@ -1,3 +1,174 @@
 <ActorFrame> <children>
+ <Layer
+            Type="Quad"
+            OnCommand="hidden,1;queuecommand,Update"
+            UpdateCommand="%function(self)
+                hey.UpdateCommand();
+
+                self:sleep(hey.updateSleep);
+                self:queuecommand('Update');
+            end"
+        />
+        <Layer
+            Type="Quad"
+            Condition="hey.streamMode"
+            InitCommand="hidden,1"
+            OnCommand="%function(self)
+                if not hey.J then
+                    SCREENMAN:SystemMessage('wtf');
+                    hey.J = {0,0,0,0,0,0};
+                end
+
+                if not GAMESTATE:GetCurrentSong() then
+                    self:sleep(1);
+                end
+
+                self:queuecommand('GetSong');
+            end"
+            GetSongCommand="%function(self)
+                streamsetupvariable_song = GAMESTATE:GetCurrentSong();
+				local song = streamsetupvariable_song
+                if song then
+                    local p = 0;
+                    local steps = GAMESTATE:GetCurrentSteps(0);
+                    if not steps then
+                        local p = 1;
+                        steps = GAMESTATE:GetCurrentSteps(1);
+                    end
+
+					local songtime = song:MusicLengthSeconds() or 0
+					local songfloor = math.floor(songtime)
+					local songmin = math.floor(songfloor/60)
+					local songsec = math.mod(songfloor,60)
+					local songmili = songtime - songfloor
+					
+                    local s = (song:GetDisplayArtist() or '???') .. ' - ';
+                    s = s .. (song:GetDisplayMainTitle() or '???') .. ' (';
+                    s = s .. songmin .. ':' .. songsec .. ':' .. songmili;
+                    --s = s .. (steps and steps:GetMeter() or 0) .. '\n';
+                    --s = s .. hey.GetStepsDescriptionText(song) .. '\n';
+                    --s = s .. (steps and steps:GetRadarValues(p):GetValue(RADAR_CATEGORY_TAPS) or 0) .. '\n';
+                    --s = s .. (steps and steps:GetDifficulty() or 0) .. '\n';
+                    --s = s .. (song:GetBannerPath() or '') .. '\n';
+                    hey.WriteSongInfos(s);
+                    --hey.ResetJudgment();
+                    --hey.WriteJudgment(1);
+                end
+				self:sleep(1)
+				self:queuecommand('Update');
+            end"
+			UpdateCommand="%function(self)
+				if streamsetupvariable_song == GAMESTATE:GetCurrentSong() then
+					self:sleep(1)
+					self:queuecommand('Update');
+				else
+					self:queuecommand('GetSong');
+				end
+			end"
+			
+			
+			SaltyResetMessageCommand="%function(self)
+                hey.J = {0,0,0,0,0,0};
+                hey.ResetJudgment();
+                hey.WriteJudgment(1);
+            end"
+            Fk_P1_W1MessageCommand="queuecommand,Hey_P1_W1"
+            Hey_P1_W1Command="%function(self)
+                hey.J[1] = hey.J[1] + 1;
+                hey.GJ[1] = hey.GJ[1] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W2MessageCommand="queuecommand,Hey_P1_W2"
+            Hey_P1_W2Command="%function(self)
+                hey.J[2] = hey.J[2] + 1;
+                hey.GJ[2] = hey.GJ[2] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W3MessageCommand="queuecommand,Hey_P1_W3"
+            Hey_P1_W3Command="%function(self)
+                hey.J[3] = hey.J[3] + 1;
+                hey.GJ[3] = hey.GJ[3] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W4MessageCommand="queuecommand,Hey_P1_W4"
+            Hey_P1_W4Command="%function(self)
+                hey.J[4] = hey.J[4] + 1;
+                hey.GJ[4] = hey.GJ[4] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W5MessageCommand="queuecommand,Hey_P1_W5"
+            Hey_P1_W5Command="%function(self)
+                hey.J[5] = hey.J[5] + 1;
+                hey.GJ[5] = hey.GJ[5] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W6MessageCommand="queuecommand,Hey_P1_W6"
+            Hey_P1_W6Command="%function(self)
+                hey.J[6] = hey.J[6] + 1;
+                hey.GJ[6] = hey.GJ[6] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_OKMessageCommand="queuecommand,Hey_P1_OK"
+            Hey_P1_OKCommand="%function(self)
+                hey.WriteJudgment();
+            end"
+            Fk_P1_NGMessageCommand="queuecommand,Hey_P1_NG"
+            Hey_P1_NGCommand="%function(self)
+                hey.WriteJudgment();
+            end"
+        />
+		
+		<!-- put this back in when you want judgments
+		
+            SaltyResetMessageCommand="%function(self)
+                hey.J = {0,0,0,0,0,0};
+                hey.ResetJudgment();
+                hey.WriteJudgment(1);
+            end"
+            Fk_P1_W1MessageCommand="queuecommand,Hey_P1_W1"
+            Hey_P1_W1Command="%function(self)
+                hey.J[1] = hey.J[1] + 1;
+                hey.GJ[1] = hey.GJ[1] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W2MessageCommand="queuecommand,Hey_P1_W2"
+            Hey_P1_W2Command="%function(self)
+                hey.J[2] = hey.J[2] + 1;
+                hey.GJ[2] = hey.GJ[2] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W3MessageCommand="queuecommand,Hey_P1_W3"
+            Hey_P1_W3Command="%function(self)
+                hey.J[3] = hey.J[3] + 1;
+                hey.GJ[3] = hey.GJ[3] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W4MessageCommand="queuecommand,Hey_P1_W4"
+            Hey_P1_W4Command="%function(self)
+                hey.J[4] = hey.J[4] + 1;
+                hey.GJ[4] = hey.GJ[4] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W5MessageCommand="queuecommand,Hey_P1_W5"
+            Hey_P1_W5Command="%function(self)
+                hey.J[5] = hey.J[5] + 1;
+                hey.GJ[5] = hey.GJ[5] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_W6MessageCommand="queuecommand,Hey_P1_W6"
+            Hey_P1_W6Command="%function(self)
+                hey.J[6] = hey.J[6] + 1;
+                hey.GJ[6] = hey.GJ[6] + 1;
+                hey.WriteJudgment();
+            end"
+            Fk_P1_OKMessageCommand="queuecommand,Hey_P1_OK"
+            Hey_P1_OKCommand="%function(self)
+                hey.WriteJudgment();
+            end"
+            Fk_P1_NGMessageCommand="queuecommand,Hey_P1_NG"
+            Hey_P1_NGCommand="%function(self)
+                hey.WriteJudgment();
+            end"
+		-->
 </children> </ActorFrame>
 

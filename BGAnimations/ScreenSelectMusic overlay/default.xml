@@ -93,5 +93,16 @@
 	<Quad Command="stretchto,SCREEN_CENTER_X+320,SCREEN_BOTTOM,SCREEN_RIGHT,SCREEN_TOP;diffuse,#00000000" OptionsShowMessageCommand="linear,0.4;diffusealpha,1" />
 	<Quad Command="stretchto,SCREEN_CENTER_X-320,SCREEN_BOTTOM,SCREEN_LEFT,SCREEN_TOP;diffuse,#00000000" OptionsShowMessageCommand="linear,0.4;diffusealpha,1" />
 	<Layer Condition="not GAMESTATE:IsCourseMode()" File="DifficultyList.xml" Command="x,SCREEN_CENTER_X-(SCREEN_WIDTH*160/640+94);y,SCREEN_CENTER_Y+25.5" OffCommand="linear,.3;diffusealpha,0" SongInfoMessageCommand="queuecommand,Update" />
+	<Hey
+        Type="Quad"
+        Condition="hey.streamMode"
+        InitCommand="%function(self)
+            self:hidden(1);
+            hey.J = {0,0,0,0,0,0};
+            hey.ResetJudgment();
+            hey.WriteJudgment(1);
+            hey.ResetSongInfos();
+        end"
+    />
 </children> </ActorFrame>
 
