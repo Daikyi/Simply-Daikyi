@@ -62,7 +62,7 @@ $(() => {
     s.on('songinfos', data => {
         if (data.length == 0) {
             if (oldS[0] != '9999' && oldS[1] != '9999') {
-                oldS = ['9999','9999','9999','9999','9999','9999','9999'];
+                oldS = ['9999','9999','9999','9999','9999','9999','9999','9999','9999'];
                 document.getElementById('s_1').innerHTML = '';
                 document.getElementById('s_2').innerHTML = '';
                 document.getElementById('s_3').innerHTML = '(00:00)';
@@ -72,6 +72,8 @@ $(() => {
                 document.getElementById('s_4').innerHTML = '-';
                 document.getElementById('s_5').innerHTML = '(-)';
                 document.getElementById('s_6').innerHTML = '(-)';
+                document.getElementById('s_8').innerHTML = '(-)';
+				document.getElementById(`sm_banner`).src = "img\\bn.png";
                 s.emit('game', '');
             }
         } else {
@@ -90,12 +92,25 @@ $(() => {
                             $('#s_4').removeClass(`d_${j}`);    
                         }
                         $('#s_4').addClass(`d_${data[6]}`);
+                    } else if (i == 8) {
+                        if (document.getElementById(`sm_banner`)) {
+							document.getElementById(`sm_banner`).src = `${data[8]}`.substring(1);
+						}
                     } else {
                         if (document.getElementById(`s_${i+1}`)) {
-                            document.getElementById(`s_${i+1}`).innerHTML = data[i];
+							if (i==7){
+								if ( data[i] != ''){
+								document.getElementById(`s_${i+1}`).innerHTML = 'Modded by ' + data[i];	
+								}else{
+									document.getElementById(`s_${i+1}`).innerHTML = '-';	
+								}
+							}else{
+								document.getElementById(`s_${i+1}`).innerHTML = data[i];
+							}
                         }
                     }
                 }
+				
             }
             /*if (!data[5]) {
                 document.getElementById('song-infos').style.backgroundImage = "url('/files/old/SgI-bg.png')";

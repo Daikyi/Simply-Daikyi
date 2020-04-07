@@ -50,7 +50,8 @@
                     s = s .. hey.GetStepsDescriptionText(song) .. '\n';
                     s = s .. (steps and steps:GetRadarValues(p):GetValue(RADAR_CATEGORY_TAPS) or 0) .. '\n';
                     s = s .. (steps and steps:GetDifficulty() or 0) .. '\n';
-                    s = s .. (song:GetBannerPath() or '') .. '\n';
+					s = s .. (song:GetDisplaySubTitle() or '') .. '\n';
+                    s = s .. (song:GetBannerPath() or '\\img\\bn.png') .. '\n';
                     
                     --local s = ' Now Playing ~ [ ' .. (song:GetDisplayArtist() or '???') .. ' - ';
                     --s = s .. (song:GetDisplayMainTitle() or '???') .. ' (';
@@ -70,7 +71,7 @@
 			UpdateCommand="%function(self)
 				if streamsetupvariable_song == GAMESTATE:GetCurrentSong() then
 					if streamsetupResets==0 then
-						self:sleep(song:MusicLengthSeconds()+5 or 1)
+						self:sleep(streamsetupvariable_song:MusicLengthSeconds()+5 or 1)
 						streamsetupResets = streamsetupResets+1
 					else
 						self:sleep(1)

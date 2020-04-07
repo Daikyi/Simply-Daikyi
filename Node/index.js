@@ -35,7 +35,7 @@ if (DISCORD) {
 setInterval(() => {
     if (s) {
         let songInfos = [];
-        let lr = new Lbl('songinfos.txt');
+        let lr = new Lbl('C:\\Users\\Daikyi\\Documents\\songinfos.txt');
         lr.on('line', line => {
             songInfos.push(line);
         });
