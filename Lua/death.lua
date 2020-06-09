@@ -10,11 +10,13 @@ local players = 0
 local isReady = false
 
 function death.Next()
-    current = current%#types+1
-    if types[current].Prepare then
-        types[current].Prepare(types[current].Frame)
-    end
-    SCREENMAN:SystemMessage('FailOverlay '..types[current].Name)
+	if not GAMESTATE:IsEditMode() then
+		current = current%#types+1
+		if types[current].Prepare then
+			types[current].Prepare(types[current].Frame)
+		end
+		SCREENMAN:SystemMessage('FailOverlay '..types[current].Name)
+	end
 end
 
 function death.Trigger()
@@ -35,6 +37,8 @@ function death:Ready()
         if style.Setup then style.Setup(actor) end
         types[i+1] = style
     end
+
+    if self:hascommand("StepP1Action5Press") then return end
 
     for i=1,2 do
         local pn = i
